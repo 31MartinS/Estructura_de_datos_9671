@@ -6,6 +6,7 @@
 	Enunciado: Manejo de plantillas
 	Nivel.- 3  NRC: 9671 
 */
+
 #ifndef OPERACIONESFRACCIONES_H
 #define OPERACIONESFRACCIONES_H
 
@@ -21,7 +22,5 @@ public:
     static int mcd(int a, int b);
     static int mcm(int a, int b);
 };
-
-
 
 #endif
