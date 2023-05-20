@@ -1,32 +1,67 @@
-/*
-	Universidad de las Fuerzas Armadas ESPE
-	-- Estructura de Datos--
-	Alumno/s: Gutiérrez Miguel, Rivera Sebastián, Suquillo Martín
-	Fecha de creación: 17/05/2023
-	Enunciado: Manejo de plantillas
-	Nivel.- 3  NRC: 9671 
-*/
 #include <iostream>
-#include "ClaseTemplate.cpp"
-#include "Imprimir.h"
+#include "Matriz.cpp"
+#include "Operaciones.cpp"
+/*int ingresar(char *);
+int ingresar(char *msj){
+	int dim;
+	printf("\n%s\n",msj);
+	scanf("%d",&dim);
+	return dim;
+}
+void iniciar(int);
+void iniciar(int  dim){
+	int pot;
+	int **mR=nullptr;
+	int **m1=nullptr;
+	int **m2=nullptr;
+	Matriz matriz1(m1, dim);
+	Operaciones operaciones1(matriz1);
+	operaciones1.segmentar();
+	operaciones1.encerar();
+	operaciones1.imprimir();
+	/*
+	m1=operaciones.generar();
+	m2=operaciones.generar();
+	operaciones.imprimir(m1);
+	operaciones.imprimir(m2);*/
+/*}*/
+/*
+int main(int argc, char** argv) {
+	int dim;
+	dim=ingresar("Ingrese la dimension de la matriz");
+	iniciar(dim);
+	
+	return 0;
+}*/
 
-int main() {
-    
-    Validacion valido;
-    std::cout << "Ingrese el valor inicial: ";
-    int valorInicial = valido.ingresarDatosEnteros();
 
-    ClaseTemplate<int> objeto(valorInicial);
+template <typename T>
+Matriz<T> ::ingresar(char* msj) {
+	int dim;
+	printf("\n%s\n", msj);
+	scanf("%d", &dim);
+	
+	T** matriz = new T*[dim];
+	for (int i = 0; i < dim; i++) {
+		matriz[i] = new T[dim];
+	}
+	
+	return Matriz<T>(matriz, dim);
+}
 
-    std::cout << "Valor inicial: " << objeto.getValor() << std::endl;
+template <typename T>
+void iniciar(int dim) {
+	Matriz<T> matriz1 = ingresar<T>("Ingrese la matriz");
+	Operaciones<Matriz<T>> operaciones1(matriz1);
+	operaciones1.segmentar();
+	operaciones1.encerar();
+	operaciones1.imprimir();
+}
 
-    ClaseTemplate<int> resultado1 = ++objeto;
-    std::cout << "Despues del pre-incremento: " << objeto.getValor() << std::endl;
-    std::cout << "Resultado del pre-incremento: " << resultado1.getValor() << std::endl;
+int main(int argc, char** argv) {
+	int dim;
+	dim = ingresar<int>("Ingrese la dimension de la matriz");
+	iniciar<int>(dim);
 
-    ClaseTemplate<int> resultado2 = objeto++;
-    std::cout << "Despues del post-incremento: " << objeto.getValor() << std::endl;
-    std::cout << "Resultado del post-incremento: " << resultado2.getValor() << std::endl;
-
-    return 0;
+	return 0;
 }
