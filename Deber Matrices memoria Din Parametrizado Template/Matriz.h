@@ -8,39 +8,17 @@
 */
 
 #pragma once
-#include <iostream>
 
-template <typename T>
 class Matriz {
 private:
-    T** matriz;
+    int **matriz;
     int dim;
+
 public:
     Matriz();
-    Matriz(T**, int);
+    Matriz(int **matriz, int dim);
     int getDim();
-    void setDim(int);
-    T** getMatriz();
-    void setMatriz(T**);
+    void setDim(int dim);
+    int** getMatriz();
+    void setMatriz(int **matriz);
 };
-
-template <typename T>
-	Matriz<T>::Matriz(T** m, int d) {
-    // Implementación del constructor
-}
-
-template <typename T>
-	int Matriz<T>::getDim() {
-}
-
-template <typename T>
-	void Matriz<T>::setDim(int d) {
-}
-
-template <typename T>
-	T** Matriz<T>::getMatriz() {
-}
-
-template <typename T>
-	void Matriz<T>::setMatriz(T** m) {
-}
