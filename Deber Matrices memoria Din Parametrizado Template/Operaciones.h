@@ -1,5 +1,6 @@
 #pragma once
 #include "Matriz.h"
+template <typename Matriz>
 class Operaciones{
 	public:
 		Operaciones();
