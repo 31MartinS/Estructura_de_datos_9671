@@ -40,18 +40,19 @@ void Operaciones::imprimir(){
 	}
 }
 
-/*
-int **Operaciones::generar(){
+
+void Operaciones::generar(){
 	srand(time(NULL));
-	int **matriz;
-	for(int i=0;i<_matriz.getDim();i++){
-		for(int j=0;j<_matriz.getDim();j++)	{
-			*(*(matriz+i)+j)=rand()%3;
+	int** matriz = new int*[_matriz.getDim()];
+	for(int i = 0; i < _matriz.getDim(); i++){
+		matriz[i] = new int[_matriz.getDim()];
+		for(int j = 0; j < _matriz.getDim(); j++) {
+			matriz[i][j] = rand() % 3;
 		}
 	}
-	return matriz;
+	return *matriz;
 }
-
+/*
 void Operaciones::procesarPot(int exp, int **matriz){
 	for(int e=1;e<=exp;e++){
 		for(int i=0;i<_matriz.getDim();i++){
