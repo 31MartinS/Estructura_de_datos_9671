@@ -22,3 +22,7 @@ public:
     int** getMatriz();
     void setMatriz(int **matriz);
 };
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
