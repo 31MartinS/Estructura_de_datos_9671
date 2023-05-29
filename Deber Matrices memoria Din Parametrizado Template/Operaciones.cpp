@@ -4,14 +4,13 @@
 #include <stdio.h>
 #include <conio.h>
 #include "Operaciones.h"
-Operaciones::Operaciones(){
-}
 
-Operaciones::Operaciones(Matriz m){
+template <typename Matriz>
+Operaciones<Matriz>::Operaciones(Matriz m){
 	this->_matriz=m;
 }
-
-void Operaciones::segmentar(){
+template <typename Matriz>
+void Operaciones<Matriz>::segmentar(){
 	int j, **matriz;
 	matriz=_matriz.getMatriz();
 	matriz=(int**)malloc(_matriz.getDim()*sizeof(int*));
@@ -20,16 +19,16 @@ void Operaciones::segmentar(){
 	}
 	_matriz.setMatriz(matriz);
 }
-
-void Operaciones::encerar(){
+template <typename Matriz>
+void Operaciones<Matriz>::encerar(){
 	for(int i=0;i<_matriz.getDim();i++){
 		for(int j=0;j<_matriz.getDim();j++){
 			*(*(_matriz.getMatriz()+i)+j)=0;
 		}
 	}
 }
-
-void Operaciones::imprimir(){
+template <typename Matriz>
+void Operaciones<Matriz>::imprimir(){
 	printf("La matriz es:\n");
 	for(int i=0;i<_matriz.getDim();i++){
 		for(int j=0;j<_matriz.getDim();j++){
