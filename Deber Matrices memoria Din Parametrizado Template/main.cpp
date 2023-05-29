@@ -19,6 +19,9 @@ void iniciar(int  dim){
 	operaciones1.segmentar();
 	operaciones1.encerar();
 	operaciones1.imprimir();
+	operaciones1.generar();
+	operaciones1.imprimir();
+	
 	/*
 	m1=operaciones.generar();
 	m2=operaciones.generar();
