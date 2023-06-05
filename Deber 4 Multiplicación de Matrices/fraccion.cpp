@@ -2,8 +2,8 @@
 	Universidad de las Fuerzas Armadas ESPE
 	-- Estructura de Datos--
 	Alumno/s: Gutiérrez Miguel, Rivera Sebastián, Suquillo Martín
-	Fecha de creación: 12/05/2023
-	Enunciado: Manejo de plantillas
+	Fecha de creación: 22/05/2023
+	Enunciado: Multiplicacion de matrices
 	Nivel.- 3  NRC: 9671 
 */
 

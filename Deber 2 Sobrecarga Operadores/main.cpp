@@ -7,25 +7,19 @@
 	Nivel.- 3  NRC: 9671 
 */
 #include <iostream>
-#include "ClaseTemplate.cpp"
-#include "Imprimir.h"
+#include "MiClase.cpp"
 
 int main() {
-    
-    Validacion valido;
-    std::cout << "Ingrese el valor inicial: ";
-    int valorInicial = valido.ingresarDatosEnteros();
-
-    ClaseTemplate<int> objeto(valorInicial);
+    MiClase objeto(7);
 
     std::cout << "Valor inicial: " << objeto.getValor() << std::endl;
 
-    ClaseTemplate<int> resultado1 = ++objeto;
-    std::cout << "Despues del pre-incremento: " << objeto.getValor() << std::endl;
+    MiClase resultado1 = ++objeto;
+    std::cout << "Después del pre-incremento: " << objeto.getValor() << std::endl;
     std::cout << "Resultado del pre-incremento: " << resultado1.getValor() << std::endl;
 
-    ClaseTemplate<int> resultado2 = objeto++;
-    std::cout << "Despues del post-incremento: " << objeto.getValor() << std::endl;
+    MiClase resultado2 = objeto++;
+    std::cout << "Después del post-incremento: " << objeto.getValor() << std::endl;
     std::cout << "Resultado del post-incremento: " << resultado2.getValor() << std::endl;
 
     return 0;

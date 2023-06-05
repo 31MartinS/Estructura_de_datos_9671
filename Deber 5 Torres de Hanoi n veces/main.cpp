@@ -1,3 +1,11 @@
+/*
+	Universidad de las Fuerzas Armadas ESPE
+	-- Estructura de Datos--
+	Alumno/s: Gutiérrez Miguel, Rivera Sebastián, Suquillo Martín
+	Fecha de creación: 26/05/2023
+	Enunciado: Torres de hanoi n veces
+	Nivel.- 3  NRC: 9671 
+*/
 #include <iostream>
 #include <functional>
 
