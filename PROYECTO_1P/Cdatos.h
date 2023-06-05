@@ -4,7 +4,7 @@
 	Fecha de creación: 20/11/2022
 	Fecha de modificación: 30/11/2022
 	Enunciado: Proyecto con uso de Listas Simples, Dobles y Circulares para generar un Rol de Pago
-	Nivel.- 3   NRC: 7999
+	Nivel.- 3   NRC: 9671
 */
 #pragma once
 #include <iostream>

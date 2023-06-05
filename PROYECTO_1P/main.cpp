@@ -1,12 +1,11 @@
 /*
 	UFA-ESPE
-	Alumnos: Miguel Gutierrez, Sebastian Rivera, Martin Suquillo.
+	Alumnos: Ricardo Rivadeneira, Sebastian Rivera.
 	Fecha de creación: 20/11/2022
 	Fecha de modificación: 30/11/2022
 	Enunciado: Proyecto con uso de Listas Simples, Dobles y Circulares para generar un Rol de Pago
-	Nivel.- 3   NRC: 7999
+	Nivel.- 3   NRC: 9671
 */
-
 #include "menus.cpp"
 using namespace std;
 int main(int argc, char** argv){
