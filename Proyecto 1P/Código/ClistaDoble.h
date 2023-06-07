@@ -6,6 +6,7 @@
 	Enunciado: Proyecto 1P
 	Nivel.- 3  NRC: 9671 
 */
+
 #pragma once
 #include <iostream>
 #include <string>
@@ -26,6 +27,7 @@ class ClistaDoble{
     void agregarCdatos(Cdatos);//insertar por cola
     void retirarCdatos(Cdatos);//eliminar
     void imprimirRegistros();
+    //void vaciarLista();
     Cdatos buscarCdatos(int);
     void mostrar();
     void registro(string,string,string,int,double,double,double); //Nombre,Apellido,Cargo,Cedula,Sueldo,Horas,Anticipo
