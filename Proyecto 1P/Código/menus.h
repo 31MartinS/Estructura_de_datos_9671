@@ -13,7 +13,7 @@
 #include <cstdlib>
 #include "registro.cpp"
 #include "Cdatos.cpp"
-//#include "ClistaSimple.cpp"
+#include "ClistaSimple.cpp"
 using namespace std;
 
 class menus{

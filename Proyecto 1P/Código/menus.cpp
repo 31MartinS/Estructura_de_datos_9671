@@ -16,9 +16,7 @@
 #include <istream>
 #include <iostream>
 #include "menus.h"
-//#include "ClistaSimple.cpp"
 #include "ClistaDoble.cpp"
-//#include "ClistaDCircular.cpp"
 #include "NodoDatos.cpp"
 #include "registro.cpp"
 #include <fstream>
@@ -115,10 +113,7 @@ void menus::verificar_user(){
 	char  usuario2[] = {"admin"}, 
 	password2[] = {"123"},contrasenia, caracter;
     std::string valorString="";
-	system("color 0C");
-    printf("\t\t+~~~~+\n");
 	printf("\t\t|  INICIO DE SESION  |\n");
-	printf("\t\t+~~~~+\n\n");
 	ingresoSesion:
 	printf("  > Ingrese su usuario : ");
 	getline(cin, usuario);
@@ -157,18 +152,16 @@ void menus::verificar_user(){
         if (!ingresa)
         {
             system("cls");
-        	system("color 06");
-            cout << "\n\n\tEl usuario y/o password son incorrectos" << endl;
+            cout << "\n\n\tEl usuario y/o contrase%ca son incorrectos" << endl;
             printf("\t\t---------------------\n");
-			printf("\t\tX~Acceso denegado~X\n");
+			printf("\t\t| Acceso denegado |\n");
 			printf("\t\t---------------------\n\n");
 			goto ingresoSesion;
 
         }else{
         	system("cls");
-		system("color 0A");
 		printf("\t\t---------------------\n");
-		printf("\t\tX~Acceso permitido~X\n");
+		printf("\t\t| Acceso permitido |\n");
 		printf("\t\t---------------------\n");
 		system("pause");
     }
@@ -180,10 +173,8 @@ int menu(const char *opciones[],int n){
 	bool repite = true;
 	do{
 		system("cls");
-		system("color 0D");
 		gotoXY(4,3+opcionSeleccionada); std::cout<<"==>";
-		gotoXY(1,0); std::cout<<"+~~~~~~~~~~~~~~~~~~~~~~~~~~+\n |  Registro de Empleados   |\n |  +---------------------+ |\n |  |                     | |\n";
-		gotoXY(1,6); std::cout<<"|  |                     | |\n |  +---------------------+ |\n |             O            |\n +~~~~~~~~~~~~~~~~~~~~~~~~~~+";
+		gotoXY(1,0); std::cout<<"\t\t| Registro de Empleados |";
 		gotoXY(1,11); std::cout<<"\n Para moverse arriba use 'i' para bajar use 'k'\n Para ingresar aplaste ENTER";
 		for(int i=0;i<n;i++){
 			gotoXY(10,4+i); std::cout<<i+1<<")"<<opciones[i];
@@ -248,7 +239,7 @@ int menu2(const char *opciones[],int n){
 	do{
 		system("cls");
 		gotoXY(4,3+opcionSeleccionada); std::cout<<"~~>";
-		gotoXY(1,0); std::cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\t|        *** MENU ***       |\n\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+		gotoXY(1,0); std::cout<<"\t\t|      MENU     |";
 		gotoXY(1,11); std::cout<<"\n Para moverse arriba use 'i' para bajar use 'k'\n Para ingresar aplaste ENTER";
 		for(int i=0;i<n;i++){
 			gotoXY(10,4+i); std::cout<<i+1<<")"<<opciones[i];
@@ -286,7 +277,7 @@ int menuListas(const char *opciones[],int n){
 	do{
 		system("cls");
 		gotoXY(4,3+opcionSeleccionada); std::cout<<"~~>";
-		gotoXY(1,0); std::cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\t|      *** Tipo de Lista en la que Trabajar  ***       |\n\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+		gotoXY(1,0); std::cout<<"\t\t|     Tipo de Lista en la que Trabajar    |";
 		gotoXY(1,11); std::cout<<"\n Para moverse arriba use 'i' para bajar use 'k'\n Para ingresar aplaste ENTER";
 		for(int i=0;i<n;i++){
 			gotoXY(10,4+i); std::cout<<i+1<<")"<<opciones[i];
@@ -339,12 +330,10 @@ int menus::menuLSDC(){
     char* op;
     int auxi;
     do{
-		system("colo 0D");
         escogido=menuListas(opciones, n);
         system("cls");
         switch (escogido){
             case 1:{
-					system("color 02");
 					system("cls");
 					menuL.menuDoble();
                     cout<<"\n";
@@ -387,20 +376,18 @@ int menus::menuDoble(){
     char* op;
     int auxi;
     do{
-		system("colo 0D");
         escogido=menu2(opciones, n);
         system("cls");
         switch (escogido){
             case 1:{
 					system("cls");
-					system("color 01");
 					char va[10],col[9],mar[9],mod[9];
 					float costo;
 					string dataIn;
 					int auxcedAG;
 					char data[15];
 					bool dataEntered = false;
-					std::cout<<"\t\t **Consulta tu Rol de Pagos**";
+					std::cout<<"\t\t | Ingresar informacion de empleado |";
 					while (!dataEntered){
 						ingresoCedula:
 						strcpy(data,ingresarDatosEnteros("\n> Ingrese su cedula: "));
@@ -489,13 +476,12 @@ int menus::menuDoble(){
                     system("cls");
                     }break;
             case 2:{
-					system("color 02");
 					system("cls");
 					char va[10],col[9],mar[9],mod[9];
 					float costo;
-					std::cout<<"\t\t **Elimina la informacion de tu Rol de Pagos**"<<endl;
-					printf("  Busca por tu No. de cedula dentro de los Registros de la Empresa ");
-					strcpy(dato2,ingresarDatosEnteros("\n>Ingrese tu cedula: "));
+					std::cout<<"\t\t | Eliminar Información de empleado |"<<endl;
+					printf("  Busque el No. de  cedula dentro de los registros de la Empresa ");
+					strcpy(dato2,ingresarDatosEnteros("\n>Ingrese la cedula: "));
 					int buscar=atoi(dato2);
 					Cdatos cdat;
 					cdat =  listadoble->buscarCdatos(buscar);
@@ -521,16 +507,15 @@ int menus::menuDoble(){
                 	}break;
             case 3:{
 					system("cls");
-					system("color 03");
-					std::cout<<"\t\t **Mostrar el listado emplados**"<<endl;
+					std::cout<<"\t\t | Mostrar el listado emplados |"<<endl;
 					listadoble->mostrar();
 					std::cout<<"\n";
                 	system("pause");
                     system("cls");
                     }break;
 			case 4:{
-					printf("\t\t  **Mostrar Registro**  \n");
-					printf(" Busca por tu No. de cedula dentro de los Registros de la Empresa ");
+					printf("\t\t  | Buscar en Registro |  \n");
+					printf(" Buscar por No. de cedula dentro de los registros de la Empresa ");
 					strcpy(dato6,ingresarDatosEnteros("\n>Ingrese tu cedula: "));
 					int buscar=atoi(dato6);
 					Cdatos cdat;
@@ -546,8 +531,7 @@ int menus::menuDoble(){
 					}break;
 			case 5:{
 					system("cls");
-               		system("color 06");
-               		cout << "\t\t **Imprimir Todos los Registros**" << endl;
+               		cout << "\t\t | Imprimir Todos los Registros |" << endl;
                		listadoble->imprimirRegistros();
                 	cout << "\n";
                 	system("pause");
@@ -557,7 +541,7 @@ int menus::menuDoble(){
 			case 6:{
 					system("cls");
 					printf("\t\t+~~~~~~~~~~~~~~~~~~~~~~~~~~+\n");
-					printf("\t\t|  Gracias por Visitarnos  |\n");
+					printf("\t\t|  Gracias por usar el Programa  |\n");
 					printf("\t\t+~~~~~~~~~~~~~~~~~~~~~~~~~~+\n\n");
     	    		exit(0);
 					}break;

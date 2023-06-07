@@ -98,43 +98,6 @@ char* ingresarChar(char *msj){
 	return dato;
 }
 
-int menu3(const char *opciones[],int n){
-	int opcionSeleccionada=1;
-	int tecla;
-	bool repite = true;
-	do{
-		system("cls");
-		gotoXY(4,3+opcionSeleccionada); std::cout<<"~~>";
-		gotoXY(1,0); std::cout<<"\t\t Desea Solicitar un Adelanto";
-		gotoXY(1,11); std::cout<<"\n Para moverse arriba use 'i' para bajar use 'k'\n Para ingresar aplaste ENTER";
-		for(int i=0;i<n;i++){
-			gotoXY(10,4+i); std::cout<<i+1<<")"<<opciones[i];
-		}
-		do{
-			tecla=getch();
-		}while(tecla!=TECLA_ARRIBA && tecla!=TECLA_ABAJO && tecla!=ENTER);
-		switch(tecla){
-			case TECLA_ARRIBA:
-				opcionSeleccionada--;
-				if(opcionSeleccionada == 0){
-					opcionSeleccionada = n;
-				}
-				break;
-			
-			case TECLA_ABAJO:
-				opcionSeleccionada++;
-				if(opcionSeleccionada > n){
-					opcionSeleccionada = 1;
-				}
-				break;
-			
-			case ENTER:
-				repite=false;
-				break;
-		}
-	}while(repite);
-	return opcionSeleccionada;
-}
 
 int inscribir_participante(int i, ofstream &registro){
 	ClistaSimple listaCedula;
@@ -144,7 +107,7 @@ int inscribir_participante(int i, ofstream &registro){
 	bool repite=true;
 	char dato1[10],dato2[10],dato3[10],dato4[10],dato5[10],dato6[10],dato7[10],dato8[10],dato9[10];
 	//Opciones
-	const char *opciones[]={"Si, deseo hacer un adelanto","No, continuar el formulario"};
+	const char *opciones[]={""};
 	int p=2;
 	fflush(stdin);
     system("color 0A");
@@ -255,7 +218,7 @@ int inscribir_participante(int i, ofstream &registro){
 			strcpy(dato9,ingresarDatosFlotantes("\n> Ingrese el valor su Salario: $"));
 			participantes[i].salario=atof(dato9);
 		}while(participantes[i].salario>3000.5 || participantes[i].salario<425);
-		escogido=menu3(opciones, p);
+		//escogidomenu3(opciones, p);
         //system("cls");
 		double adelanto;
         switch (escogido){
