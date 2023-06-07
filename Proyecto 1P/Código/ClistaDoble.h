@@ -28,5 +28,5 @@ class ClistaDoble{
     void imprimirRegistros();
     Cdatos buscarCdatos(int);
     void mostrar();
-    void rolPagos(string,string,string,int,double,double,double); //Nombre,Apellido,Cargo,Cedula,Sueldo,Horas,Anticipo
+    void registro(string,string,string,int,double,double,double); //Nombre,Apellido,Cargo,Cedula,Sueldo,Horas,Anticipo
 };

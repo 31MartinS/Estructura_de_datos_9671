@@ -302,45 +302,18 @@ int inscribir_participante(int i, ofstream &registro){
 	system("cls");
 	//
 	std::cout<<"+----------------------------------------------------------+"<<endl;
-    std::cout<<"|\t          *ROL DE PAGOS INDIVIDUAL*                 |"<<endl;
-    double pago=0,cuotas=0;
-    //double sueldo=420.2;
-    double interesBanco=0,sePago=0,valhorasE,ingresototal,iess,porPagar=0; 
-    std::cout<<"+----------------------------------------------------------+"<<endl;
-            if (participantes[i].horasExtra<1)
-            {
-                valhorasE=0;
-                iess=participantes[i].salario*0.0935;
-                porPagar=participantes[i].salario-participantes[i].valorAnticipo-iess;
-				participantes[i].pagaPorRecibir=porPagar;
-            }else{
-                if (participantes[i].horasExtra < 20)
-                {
-                    valhorasE= (1.5*participantes[i].horasExtra);
-                }else{
-                    valhorasE= (2*participantes[i].horasExtra);
-                }
-                ingresototal= participantes[i].salario+valhorasE;
-                iess=ingresototal*0.0935;
-                porPagar=ingresototal-participantes[i].valorAnticipo-iess;
-				participantes[i].pagaPorRecibir=porPagar;
-            }
+    std::cout<<"|\t          *FICHA DE EMPLEADO INDIVIDUAL*                 |"<<endl;
+    
 	std::cout<<"| >Nombre: "<<participantes[i].apellidos_nombres<<" "<<participantes[i].nombre2<<" "<<participantes[i].apellido1<<" "<<participantes[i].apellido2<<endl;
     std::cout<<"| >Cedula: "<<participantes[i].cedula<<"\t\t\t\t\t   |"<<endl;
     std::cout<<"| >Cargo: "<<participantes[i].cargo<<endl;
     std::cout<<"+----------------------------------------------------------+"<<endl;
-    std::cout<<"|           *INGRESOS*           |      *DESCUENTOS*      "<<endl;
+    std::cout<<"|           *INGRESOS*                                      "<<endl;
     std::cout<<"| >Salario: $"<<participantes[i].salario;
-    std::cout<<"\t | >Aportes IESS: $"<<iess<<endl;
-    std::cout<<"| >Horas Extra: "<<participantes[i].horasExtra;
-    std::cout<<"\t\t | >Anticipos: $"<<participantes[i].valorAnticipo<<endl;
-    std::cout<<"| >Valor por las Horas Extra: $"<<valhorasE<<endl;
     std::cout<<"+----------------------------------------------------------+"<<endl;    
-    std::cout<<"|    Total Ingresos: $"<<(participantes[i].salario+valhorasE)<<"    |  Total Descuento: $"<<(iess+participantes[i].valorAnticipo)<<endl;
     std::cout<<"+----------------------------------------------------------+"<<endl;
-    std::cout<<"|\t TOTAL A RECIBIR: $"<<participantes[i].pagaPorRecibir<<endl;
+    std::cout<<"| >Fecha de ingreso: $"<<endl;
     std::cout<<"+----------------------------------------------------------+"<<endl;
-	//
     system("pause");
     system("cls");
     return 0;
@@ -366,9 +339,6 @@ void imprime_inscritos(ifstream &lectura){
 			lectura>>participantes[c].cedula;
 			lectura>>participantes[c].cargo;
 			lectura>>participantes[c].salario;
-			lectura>>participantes[c].valorAnticipo;
-			lectura>>participantes[c].horasExtra;
-			lectura>>participantes[c].pagaPorRecibir;
 			
 			strcpy(participantes[c].apellidos_nombres,nombre1);	
 			strcat(participantes[c].apellidos_nombres," ");			
@@ -380,7 +350,7 @@ void imprime_inscritos(ifstream &lectura){
 	lectura.close();
 	system("color 04");
 	cout<<"\t\tx~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~x"<<endl;
-	cout<<"\t\t|                                       CLIENTES REGISTRADOS                                  |"<<endl;
+	cout<<"\t\t|                                       EMPLEADOS REGISTRADOS                                  |"<<endl;
 	cout<<"\t\tx~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~x"<<endl;
 	cout<<"\t\t|  ORD.\t | \tNOMBRE Y APELLIDO\t|     CEDULA\t |\t POR RECIBIR ESTE MES"<<endl;
 	for(i=0;i<c;i++){
