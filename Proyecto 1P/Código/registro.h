@@ -1,11 +1,12 @@
 /*
-	UFA-ESPE
-	Alumnos: Miguel Gutierrez, Sebastian Rivera, Martin Suquillo.
-	Fecha de creación: 20/11/2022
-	Fecha de modificación: 30/11/2022
-	Enunciado: Proyecto con uso Dobles generar datos de empleados de un hospital de ancianos
-	Nivel.- 3   NRC: 9671
+	Universidad de las Fuerzas Armadas ESPE
+	-- Estructura de Datos--
+	Alumno/s: Gutiérrez Miguel, Rivera Sebastián, Suquillo Martín
+	Fecha de creación: 01/05/2023
+	Enunciado: Proyecto 1P
+	Nivel.- 3  NRC: 9671 
 */
+
 #pragma once
 #include <ctype.h> 
 #include <stdio.h>

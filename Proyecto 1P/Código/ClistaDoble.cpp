@@ -6,11 +6,14 @@
 	Enunciado: Proyecto 1P
 	Nivel.- 3  NRC: 9671 
 */
+
 #include "ClistaDoble.h"
 #include <string>
 #include "fstream"
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <iomanip>
 using namespace std;
 
 //Constructor
@@ -27,31 +30,43 @@ ClistaDoble::~ClistaDoble() {
 }
 //Añadir Cdatos
 void ClistaDoble::agregarCdatos(Cdatos c){
-	
-	NodoDatos *nuevo = new NodoDatos(c);
-	NodoDatos *tmp =cabeza;
+	NodoDatos* nuevo = new NodoDatos(c);
+    NodoDatos* tmp = cabeza;
 
-	if(ListaVacia()){
-		//cout<<"primero"<<endl;
-		nuevo->setSiguiente(nuevo);
-		nuevo->setOrigen(nuevo);
-		this->cabeza = nuevo;
-	//	cout<<"finPrimero"<<endl;
-	}
-	else if(tmp->getOrigen()==cabeza && tmp->getSiguiente()==cabeza){
-	//	cout<<"segundo"<<endl;
-		nuevo->setSiguiente(tmp);
-		nuevo->setOrigen(tmp->getOrigen());
-		tmp->setOrigen(nuevo);
-		tmp->setSiguiente(nuevo);
-	}
-	else{
-		//cout<<";askd"<<endl;
-		nuevo->setSiguiente(tmp);
-		nuevo->setOrigen(tmp->getOrigen());
-		tmp->getOrigen()->setSiguiente(nuevo);
-		tmp->setOrigen(nuevo);	
-	}
+    if (ListaVacia()) {
+        nuevo->setSiguiente(nuevo);
+        nuevo->setOrigen(nuevo);
+        this->cabeza = nuevo;
+    } else if (tmp->getOrigen() == cabeza && tmp->getSiguiente() == cabeza) {
+        nuevo->setSiguiente(tmp);
+        nuevo->setOrigen(tmp->getOrigen());
+        tmp->setOrigen(nuevo);
+        tmp->setSiguiente(nuevo);
+    } else {
+        nuevo->setSiguiente(tmp);
+        nuevo->setOrigen(tmp->getOrigen());
+        tmp->getOrigen()->setSiguiente(nuevo);
+        tmp->setOrigen(nuevo);
+    }
+
+    // Obtener la fecha y hora actual
+    std::time_t tiempoActual = std::time(nullptr);
+    std::tm* fechaActual = std::localtime(&tiempoActual);
+
+    // Guardar datos en un archivo de texto
+    std::ofstream archivo("datos.txt", std::ios::app);
+    if (archivo.is_open()) {
+        archivo << "Cedula: " << c.getCedula() << std::endl;
+        archivo << "Nombre: " << c.getNombre() << std::endl;
+        archivo << "Apellido: " << c.getApellido() << std::endl;
+        archivo << "Cargo: " << c.getCargo() << std::endl;
+        archivo << "Sueldo: " << c.getSueldo() << std::endl;
+        archivo << "Fecha Registro: " << std::put_time(fechaActual, "%Y-%m-%d %H:%M:%S") << std::endl;
+        archivo << std::endl;
+        archivo.close();
+    } else {
+        std::cout << "No se pudo abrir el archivo para guardar los datos." << std::endl;
+    }
 }
 
 void ClistaDoble::retirarCdatos(Cdatos c){
@@ -77,7 +92,7 @@ Cdatos ClistaDoble::buscarCdatos(int  modelo){
 	int valor_b,count=0;
 	Cdatos cel;
 	if(this->ListaVacia()){
-		cout<<"El catalogo no esta cargado, no se puede buscar"<<endl;
+		cout<<"---"<<endl;
 	}
 	else{
 		NodoDatos* tmp = cabeza;	
@@ -112,6 +127,17 @@ void ClistaDoble::mostrar(){
     std::cout<<"----------------------------------"<<endl;
 }
 
+/*void ClistaDoble::vaciarLista() {
+        NodoDatos* actual = primerNodo;
+        while (actual != nullptr) {
+            NodoDatos* siguiente = actual->siguiente;
+            delete actual;
+            actual = siguiente;
+        }
+        primerNodo = nullptr;
+        ultimoNodo = nullptr;
+        cantidadNodos = 0;
+    }*/
 void ClistaDoble::imprimirRegistros() {
     NodoDatos* nuevo = cabeza;
 

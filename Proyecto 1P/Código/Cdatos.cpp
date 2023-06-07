@@ -6,6 +6,7 @@
 	Enunciado: Proyecto 1P
 	Nivel.- 3  NRC: 9671 
 */
+
 #pragma once
 #include <iostream>
 #include "Cdatos.h"
@@ -87,7 +88,7 @@ void Cdatos::setAnticipo(double ant){
 
 //Metodo para imprimir el Catalogo
 void Cdatos::imprimirRol(){
-    std::cout<<"Imprimir Rol"<<endl;
+    std::cout<<"Imprimir "<<endl;
     std::cout<<this->getCedula();
     std::cout<<this->getNombre();
     std::cout<<this->getApellido();
