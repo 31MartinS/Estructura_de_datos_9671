@@ -180,9 +180,9 @@ int menu(const char *opciones[],int n){
 	bool repite = true;
 	do{
 		system("cls");
-		system("color 05");
+		system("color 0D");
 		gotoXY(4,3+opcionSeleccionada); std::cout<<"==>";
-		gotoXY(1,0); std::cout<<"+~~~~~~~~~~~~~~~~~~~~~~~~~~+\n |       Rol de Pagos     |\n |  +---------------------+ |\n |  |                     | |\n";
+		gotoXY(1,0); std::cout<<"+~~~~~~~~~~~~~~~~~~~~~~~~~~+\n |  Registro de Empleados   |\n |  +---------------------+ |\n |  |                     | |\n";
 		gotoXY(1,6); std::cout<<"|  |                     | |\n |  +---------------------+ |\n |             O            |\n +~~~~~~~~~~~~~~~~~~~~~~~~~~+";
 		gotoXY(1,11); std::cout<<"\n Para moverse arriba use 'i' para bajar use 'k'\n Para ingresar aplaste ENTER";
 		for(int i=0;i<n;i++){
@@ -248,7 +248,7 @@ int menu2(const char *opciones[],int n){
 	do{
 		system("cls");
 		gotoXY(4,3+opcionSeleccionada); std::cout<<"~~>";
-		gotoXY(1,0); std::cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\t|            *** MENU ROL DE PAGOS ***       |\n\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+		gotoXY(1,0); std::cout<<"\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\t|        *** MENU ***       |\n\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 		gotoXY(1,11); std::cout<<"\n Para moverse arriba use 'i' para bajar use 'k'\n Para ingresar aplaste ENTER";
 		for(int i=0;i<n;i++){
 			gotoXY(10,4+i); std::cout<<i+1<<")"<<opciones[i];
@@ -325,11 +325,9 @@ int menus::menuLSDC(){
 	double anticipoAG,horasAG;
 	NodoDatos *ndat = new NodoDatos();
 	Cdatos* obj1 = new Cdatos(1725212326,"Sebastian Rivera",4,100.45);
-	Cdatos* obj3 = new Cdatos(1724567812,"Benjamin Novillo",3,10.5);
     ClistaSimple listaCedula;
     ClistaSimple* listaConsultados = new ClistaSimple();
 	listaConsultados->agregarListado(*obj1);
-	listaConsultados->agregarListado(*obj3);
 	system("cls");
 	int escogido;
 	bool repite=true;
@@ -382,7 +380,7 @@ int menus::menuDoble(){
 	int escogido;
 	bool repite=true;
 	//Opciones
-	const char *opciones[]={"Consultar Rol de Pago","Elimina tu Rol de Pago","Registro de Roles de Pago","Imprimir Rol de Pago Individual","Imprimir Todos los Registros","Salir"};
+	const char *opciones[]={"Registro Empleado","Eliminar","Guardar Registro txt","Mostrar Registro Individual","Imprimir Todos los Registros","Salir"};
 	int n=6;
     menus men2;
     char val[3];
@@ -482,43 +480,10 @@ int menus::menuDoble(){
 						strcpy(dato9,ingresarDatosFlotantes("\n> Ingrese el valor su sueldo: $"));
 						sueldoAg=atof(dato9);
 					}while(sueldoAg>3000.5 || sueldoAg<425);
-					int res=0;
-					do{
-							std::cout<<"\n> Realizo horas extras?:(1=SI | 2=NO) ";
-							strcpy(dato6,ingresarDatosEnteros(": "));
-							res=atoi(dato6);
-						if (res==1)
-						{
-							strcpy(dato3,ingresarDatosEnteros("\n> Ingrese las Horas Extra que ha realizado: "));
-							horasAG=atof(dato3);
-						}if (res==2)
-						{
-							horasAG=0;
-							break;
-						}
-					}while(horasAG==0);
-					int respuesta=0;
-					do{
-						
-							std::cout<<"\n> Realizo un anticipo de sueldo?:(1=SI | 2=NO) ";
-							strcpy(dato5,ingresarDatosEnteros(": "));
-							respuesta=atoi(dato5);
-						if (respuesta==1)
-						{
-							do{
-								strcpy(dato4,ingresarDatosFlotantes("\n> Ingrese el valor del Anticipo que solicito previamente: "));
-								anticipoAG=atof(dato4);
-							}while(anticipoAG>227.5); //Si es mas alto el valor, el trabajador tendrá que pagar a la empresa
-						}else{
-							anticipoAG=0;
-							break;
-						}
-						
-					}while(anticipoAG==0);
 					Cdatos* obj2 = new Cdatos(auxcedAG,nombreAg,apellidoAg,cargoAg,sueldoAg,horasAG,anticipoAG);
 					std::cout<<"\n";
 					system("cls");
-					listadoble->rolPagos(nombreAg,apellidoAg,cargoAg,auxcedAG,sueldoAg,horasAG,anticipoAG);
+					listadoble->registro(nombreAg,apellidoAg,cargoAg,auxcedAG,sueldoAg,horasAG,anticipoAG);
 					listadoble->agregarCdatos(*obj2);
 					system("pause");
                     system("cls");
@@ -549,11 +514,6 @@ int menus::menuDoble(){
 						cout<<"\n>Cargo: "<<cdat.getCargo();
 
 						cout<<"\n>Sueldo $:"<<cdat.getSueldo();
-						
-						cout<<"\n>Horas Extra: "<<cdat.getHorasExtra();
-						
-						cout<<"\n>Anticipo: $"<<cdat.getAnticipo();
-						listadoble->retirarCdatos(cdat);
 					}
 					std::cout<<"\n";
 					system("pause");
@@ -562,14 +522,14 @@ int menus::menuDoble(){
             case 3:{
 					system("cls");
 					system("color 03");
-					std::cout<<"\t\t **Mostrar el listado del Rol de Pagos**"<<endl;
+					std::cout<<"\t\t **Mostrar el listado emplados**"<<endl;
 					listadoble->mostrar();
 					std::cout<<"\n";
                 	system("pause");
                     system("cls");
                     }break;
 			case 4:{
-					printf("\t\t  **Imprimir Rol de Pagos**  \n");
+					printf("\t\t  **Mostrar Registro**  \n");
 					printf(" Busca por tu No. de cedula dentro de los Registros de la Empresa ");
 					strcpy(dato6,ingresarDatosEnteros("\n>Ingrese tu cedula: "));
 					int buscar=atoi(dato6);
@@ -580,7 +540,7 @@ int menus::menuDoble(){
 					}
 					else{
 						std::cout<<endl;
-						listadoble->rolPagos(cdat.getNombre(),cdat.getApellido(),cdat.getCargo(),cdat.getCedula(),cdat.getSueldo(),cdat.getHorasExtra(),cdat.getAnticipo());
+						listadoble->registro(cdat.getNombre(),cdat.getApellido(),cdat.getCargo(),cdat.getCedula(),cdat.getSueldo(),cdat.getHorasExtra(),cdat.getAnticipo());
 					}
 					system("pause");
 					}break;
