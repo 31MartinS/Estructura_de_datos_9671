@@ -6,6 +6,7 @@
 	Enunciado: Proyecto 1P
 	Nivel.- 3  NRC: 9671 
 */
+
 #pragma once
 #include <conio.h>
 #include <ctype.h> 
@@ -371,17 +372,17 @@ int menus::menuDoble(){
 	double sueldoAg,anticipoAG,horasAG,antieje=100.45,horaseje=4;
 	NodoDatos *ndat = new NodoDatos();
 	Cdatos* obj1 = new Cdatos(cedejem,nomejem,horaseje,antieje);
-	Cdatos* obj3 = new Cdatos(1723212326,"GWEN","VALLADAREZ","Jefa de Area",630.34,12,80.33);
+	//Cdatos* obj3 = new Cdatos(1723212326,"GWEN","VALLADAREZ","Jefa de Area",630.34,12,80.33);
 	ClistaDoble* listadoble = new ClistaDoble();
 	//listadoble->agregarCdatos(*obj1);
-	listadoble->agregarCdatos(*obj3);
+	//listadoble->agregarCdatos(*obj3);
     
 	system("cls");
 	int escogido;
 	bool repite=true;
 	//Opciones
-	const char *opciones[]={"Registro Empleado","Eliminar","Guardar Registro txt","Mostrar Registro Individual","Imprimir Todos los Registros","Salir"};
-	int n=6;
+	const char *opciones[] = {"Registro Empleado", "Eliminar", "Vaciar registros", "Mostrar Registro Individual", "Imprimir Todos los Registros", "Salir"};
+	int n = 6; 
     menus men2;
     char val[3];
     char* op;
@@ -400,7 +401,7 @@ int menus::menuDoble(){
 					int auxcedAG;
 					char data[15];
 					bool dataEntered = false;
-					std::cout<<"\t\t **Consulta tu Rol de Pagos**";
+					std::cout<<"\t\t **Registro de empleado**";
 					while (!dataEntered){
 						ingresoCedula:
 						strcpy(data,ingresarDatosEnteros("\n> Ingrese su cedula: "));
@@ -479,7 +480,7 @@ int menus::menuDoble(){
 					do{
 						strcpy(dato9,ingresarDatosFlotantes("\n> Ingrese el valor su sueldo: $"));
 						sueldoAg=atof(dato9);
-					}while(sueldoAg>3000.5 || sueldoAg<425);
+					}while(sueldoAg>3000.5 || sueldoAg<1);
 					Cdatos* obj2 = new Cdatos(auxcedAG,nombreAg,apellidoAg,cargoAg,sueldoAg,horasAG,anticipoAG);
 					std::cout<<"\n";
 					system("cls");
@@ -520,14 +521,31 @@ int menus::menuDoble(){
                     system("cls");
                 	}break;
             case 3:{
-					system("cls");
-					system("color 03");
-					std::cout<<"\t\t **Mostrar el listado emplados**"<<endl;
-					listadoble->mostrar();
-					std::cout<<"\n";
-                	system("pause");
-                    system("cls");
-                    }break;
+				    system("cls");
+				    system("color 03");
+				    std::cout << "\t\t **Vaciar registros**" << std::endl;
+				
+				    std::ofstream archivo("datos.txt", std::ofstream::trunc);  // Abre el archivo en modo truncado
+				
+				    if (archivo.is_open()) {
+				        archivo.close();  // Cierra el archivo
+				        std::cout << "Registros vaciados correctamente." << std::endl;
+				    } else {
+				        std::cout << "Error al abrir el archivo." << std::endl;
+				    }
+				
+				    std::cout << std::endl;
+				    system("pause");
+				    system("cls");
+				    }break;
+//					system("cls");
+//					system("color 03");
+//					std::cout<<"\t\t **Mostrar el listado emplados**"<<endl;
+//					listadoble->mostrar();
+//					std::cout<<"\n";
+//                	system("pause");
+//                    system("cls");
+//                    }break;
 			case 4:{
 					printf("\t\t  **Mostrar Registro**  \n");
 					printf(" Busca por tu No. de cedula dentro de los Registros de la Empresa ");
@@ -553,7 +571,13 @@ int menus::menuDoble(){
                 	system("pause");
                		system("cls");
 				}break;
-			
+//			case 6: {
+//				    system("cls");
+//				    vaciarRegistro();
+//				    std::cout << std::endl;
+//				    system("pause");
+//				    system("cls");
+//				} break;
 			case 6:{
 					system("cls");
 					printf("\t\t+~~~~~~~~~~~~~~~~~~~~~~~~~~+\n");
